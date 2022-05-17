@@ -1,0 +1,17 @@
+{
+  "name": "exercicios_protractor",
+  "version": "1.0.0",
+  "description": "Exercicios protractor",
+  "main": "baseSpec.js",
+  "scripts": {
+    "test": "protractor baseConfig.js"
+  },
+  "keywords": [
+    "protractor"
+  ],
+  "author": "Diego",
+  "license": "MIT",
+  "dependencies": {
+    "protractor": "^7.0.0"
+  }
+}
