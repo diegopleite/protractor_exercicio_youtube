@@ -1,3 +1,5 @@
+var helper = require('../helper/helper.js');
+
 describe(
     "Hello World", 
 
@@ -13,8 +15,22 @@ describe(
         it(
             "Should have a logo",
             function(){
-                var logo = element(by.className('logo'));
-                expect(logo.isDisplayed()).toBeTruthy();
+                helper.verifyElementPresenceByClass('logo');
+            }
+        );
+
+        it(
+            "Should have a img banner",
+            function(){
+                helper.verifyElementPresenceByClass('tag-widget')
+            }
+        );
+
+        it(
+            "Should navigate firs post",
+            function(){
+                var title = $$('.post-content .entry-title').first();
+                expect(title.getText()).toBe('Ciclo de Vida dos Widgets no Flutter');
             }
         );
     }
