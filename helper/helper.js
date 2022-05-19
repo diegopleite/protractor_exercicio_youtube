@@ -8,5 +8,9 @@ module.exports = {
     verifyElementPresenceByClass : function(clss){
         var element = $('.' + clss);
         expect(element.isDisplayed()).toBeTruthy();
+    },
+    verifyElementPresenceByTag : function(tag){
+        var element = $(tag);
+        expect(element.isDisplayed()).toBeTruthy();
     }
 }

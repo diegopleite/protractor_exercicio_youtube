@@ -27,10 +27,31 @@ describe(
         );
 
         it(
-            "Should navigate firs post",
+            "Should navigate first post",
             function(){
                 var title = $$('.post-content .entry-title').first();
                 expect(title.getText()).toBe('Ciclo de Vida dos Widgets no Flutter');
+            }
+        );
+
+        it(
+            "Should enter post and have a title",
+            function(){
+                var title = $$('.post-content .entry-title').first();
+                var titlePost = $('h1');
+                title.click();
+
+                expect(titlePost.getText()).toBe('Ciclo de Vida dos Widgets no Flutter');
+
+            }        
+        );
+
+        it(
+            "Should have a navbar",
+            function(){
+                var nav = element(by.css('.navbar'));
+                expect(nav.isDisplayed()).toBeTruthy();
+
             }
         );
     }
