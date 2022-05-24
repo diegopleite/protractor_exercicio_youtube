@@ -30,7 +30,7 @@ describe(
             "Should navigate first post",
             function(){
                 var title = $$('.post-content .entry-title').first();
-                expect(title.getText()).toBe('Ciclo de Vida dos Widgets no Flutterr');
+                expect(title.getText()).toBe('Ciclo de Vida dos Widgets no Flutter');
             }
         );
 
