@@ -13,4 +13,5 @@ module.exports = {
         var element = $(tag);
         expect(element.isDisplayed()).toBeTruthy();
     }
+
 }
