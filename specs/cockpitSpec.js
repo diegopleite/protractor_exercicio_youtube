@@ -1,5 +1,6 @@
 var helper = require('../helper/helper.js');
 var HtmlReporter = require('protractor-html-screenshot-reporter');
+const { element, browser } = require('protractor');
 
 
 describe(
@@ -21,23 +22,13 @@ describe(
                 browser.sleep(1000);
                 element(by.css('.store-selector')).click();
                 browser.sleep(1000);
-                element(by.css('.dropdownlist-list input')).sendKeys('DCG').sendKeys(protractor.Key.ENTER);
+                var dropDown = element(by.css('.dropdownlist-list input')).sendKeys('DCG');
+                browser.sleep(1000);  
+                var el = element(by.css('li[data-value="dcg"]')).click();   
                 browser.sleep(1000);
-                browser.actions().mouseMove(element(by.css('#app-title .tooltip-icon'))).perform();
-                browser.sleep(5000);
-                // var toolTip = element(by.css('#app-title .tooltip-icon'))
-                // var tooltiptext = toolTip.getAttribute('data-tip');
-                expect(tooltiptext.getText()).toBe('');
-
-                // const messageIcon = $('#app-title');
-                // browser.actions().mouseMove(messageIcon).perform().then(() => {
-                //     const tooltip = $('#app-title .tooltip-icon');
-                //     browser.wait(protractor.ExpectedConditions.visibilityOf(tooltip), 5000, 'Expected tooltip to appear').then(() => {
-                //         expect(tooltip.getText()).toBe('My tooltip text');
-                //     });
-                // }
-                // );
-
+                var selector = element(by.css('.store-selector'))
+                expect(selector.getText()).toContain('DCG');
+                
             }
         );
     });
