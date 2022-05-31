@@ -1,4 +1,5 @@
 var helper = require('../helper/helper.js');
+var HtmlReporter = require('protractor-html-screenshot-reporter');
 
 describe(
     "Hello World", 
@@ -42,7 +43,7 @@ describe(
                 title.click();
 
                 expect(titlePost.getText()).toBe('Ciclo de Vida dos Widgets no Flutter');
-
+                
             }        
         );
 

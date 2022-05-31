@@ -7,9 +7,15 @@ exports.config = {
     specs: [
         "../specs/specHub.js"        
     ],
-    baseUrl : 'https://eldorado.admin.core-hlg.dcg.com.br/#/v1/marketplaces',
+    baseUrl : 'https://eldorado.admin.core-hlg.dcg.com.br/',
     capabilities:{
         browserName:"chrome"
+    },
+    params: {
+      adminLogin: {
+        'user' : 'core.diego.leite',
+        'password': 'Diego001'
+      }
     },
  
     onPrepare: function(){

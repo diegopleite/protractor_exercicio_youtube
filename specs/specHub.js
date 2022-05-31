@@ -6,27 +6,20 @@ describe(
         beforeAll(
             function(){            
                 browser.waitForAngularEnabled(false);    
-                browser.get('/');
-                var login = $('#UserName');
-                login.sendKeys('core.diego.leite')
-                var password = $('#Password');
-                password.sendKeys('Diego001');
-                password.sendKeys(protractor.Key.ENTER);
+                //browser.get('/#/v1/marketplaces');                
             }
         );
 
         it(
-            "Should access validate if channel exists",
-            function(){
-                element(by.css('.unit-selector-container .dropdown-menu'));
 
-                var marketplaces = element(by.binding('marketplace.zoom'));
-                expect(marketplaces.getText()).toBe('Zoom');
-                // var button = marketplaces.element(by.css('btn'));
-                expect(button.getText()).toBe('Ativar');
-                // browser.wait(ExpectedConditions.elementToBeClickable(button));
-                // button.click();
-                
+            "Should login as user",
+            function(){
+                helper.login();
+                browser.wait(ExpectedConditions.presenceOf($('#middle')));
+                // browser.get('/#/v1/marketplaces');
+                var unidadeNegocio = element(by.css('#hubMarketplaces > .dropdown-menu > li:nth-child(1) > a'));
+                unidadeNegocio.click();
+                browser.wait(ExpectedConditions.elementToBeClickable(unidadeNegocio));             
             }
         )
     }

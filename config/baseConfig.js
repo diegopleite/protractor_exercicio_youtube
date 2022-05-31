@@ -1,4 +1,4 @@
-let SpecReporter = require('jasmine-spec-reporter').SpecReporter;
+var HtmlReporter = require('../node_modules/protractor-html-screenshot-reporter/index');
 
 exports.config = {
     framework: "jasmine",
@@ -11,26 +11,22 @@ exports.config = {
     baseUrl : 'https://blog.taller.net.br/',
     capabilities:{
         browserName:"chrome"
-    },
-
-    // onPrepare: function () {
-    //   let SpecReporter = require('jasmine-spec-reporter').SpecReporter;
-
-    //   jasmine.getEnv().addReporter(new SpecReporter({
-    //     spec: {
-    //       displayStacktrace: all
-    //     },
-    //     summary: {
-    //       displayDuration: true
-    //     }
-    //   }));
-    // }  
-    onPrepare: function(){
-      jasmine.getEnv().addReporter(new SpecReporter({
-        displayFailuresSummary: true,
-        displayFailuredSpec: true,
-        displaySuiteNumber: true,
-        displaySpecDuration: true
+    }, 
+    
+    onPrepare: function() {
+      // Add a screenshot reporter and store screenshots to `/tmp/screnshots`:
+      jasmine.getEnv().addReporter(new HtmlReporter({
+         baseDirectory: 'reports/tmp',
+         takeScreenShotsOnlyForFailedSpecs: true
       }));
-    } 
+   }
+   
+    // onPrepare: function(){
+    //   jasmine.getEnv().addReporter(new SpecReporter({
+    //     displayFailuresSummary: true,
+    //     displayFailuredSpec: true,
+    //     displaySuiteNumber: true,
+    //     displaySpecDuration: true
+    //   }));
+    // } 
 }
