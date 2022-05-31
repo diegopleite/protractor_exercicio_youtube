@@ -39,4 +39,14 @@ describe(
                 expect(tooltip.getText()).toContain(`Todas as entregas`);
             }
         );
+
+        it(
+            'Should validate layout of "Cadastro de Filiais"',
+            function(){                
+                browser.get('/locations')
+                browser.sleep(1000);
+                var title = element(by.css('#app-title h1'));
+                expect(title.getText()).toContain(`Cadastro de filiais`);
+            }
+        );
     });
