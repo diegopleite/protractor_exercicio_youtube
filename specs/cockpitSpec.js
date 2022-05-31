@@ -16,7 +16,7 @@ describe(
         );
 
         it(
-            'Should validate tooltip',
+            'Should select store ',
             function () {
                 helper.login();
                 browser.sleep(1000);
@@ -27,8 +27,16 @@ describe(
                 var el = element(by.css('li[data-value="dcg"]')).click();   
                 browser.sleep(1000);
                 var selector = element(by.css('.store-selector'))
-                expect(selector.getText()).toContain('DCG');
-                
+                expect(selector.getText()).toContain('DCG');            
+            }
+        );
+
+        it(
+            'Should validate text title',
+            function(){
+                browser.sleep(1000);
+                var tooltip = element(by.css('#app-title h1'));
+                expect(tooltip.getText()).toContain(`Todas as entregas`);
             }
         );
     });
