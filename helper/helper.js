@@ -15,7 +15,7 @@ module.exports = {
         expect(element.isDisplayed()).toBeTruthy();
     },
 
-    login: function(){
+    login : function(){
         var user = adminLogin.user_email
         , password = adminLogin.user_password;
 

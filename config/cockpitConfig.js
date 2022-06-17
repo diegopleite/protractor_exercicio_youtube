@@ -45,7 +45,7 @@ exports.config = {
       return new Promise(function(resolve){
         reporter.afterLaunch(resolve.bind(this, exitCode));
       });
-    }
+    },    
    
     // onPrepare: function(){
     //   jasmine.getEnv().addReporter(new SpecReporter({

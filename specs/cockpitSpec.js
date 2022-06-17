@@ -7,7 +7,7 @@ describe(
     "Teste automatizado exercicios Protractor",
 
     function () {
-
+        var EC = protractor.ExpectedConditions;
         beforeEach(
             function () {
                 browser.waitForAngularEnabled(false);
@@ -23,17 +23,15 @@ describe(
                 element(by.css('.store-selector')).click();
                 browser.sleep(1000);
                 var dropDown = element(by.css('.dropdownlist-list input')).sendKeys('DCG');
-                browser.sleep(1000);  
-                var el = element(by.css('li[data-value="dcg"]')).click();   
                 browser.sleep(1000);
-                var selector = element(by.css('.store-selector'))
-                expect(selector.getText()).toContain('DCG');            
+                element(by.css('li[data-value="dcg"]')).click();
+
             }
         );
 
         it(
             'Should validate text title',
-            function(){
+            function () {
                 browser.sleep(1000);
                 var tooltip = element(by.css('#app-title h1'));
                 expect(tooltip.getText()).toContain(`Todas as entregas`);
@@ -42,11 +40,21 @@ describe(
 
         it(
             'Should validate layout of "Cadastro de Filiais"',
-            function(){                
-                browser.get('/locations')
-                browser.sleep(1000);
-                var title = element(by.css('#app-title h1'));
-                expect(title.getText()).toContain(`Cadastro de filiais`);
+            function () {               
+                browser.wait(EC.textToBePresentInElement($('#app-title h1'), 'Todas as entregas'));
+                browser.get('/locations');
+                browser.wait(EC.textToBePresentInElement($('#app-title h1'), 'Cadastro de filiais'));         
+                
+                browser.wait(EC.elementToBeClickable($('.fa-plus')), 5000);       
+
+                var location = element(by.css('.fa-plus'));
+                location.click();
+                
+                
+                expect(element(by.css('#app-title h1')).getText()).toContain('Adicionar filial');
+                expect(browser.wait(EC.presenceOf($('form'))), 5000);
+
+
             }
         );
     });
