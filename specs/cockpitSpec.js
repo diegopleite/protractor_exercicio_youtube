@@ -74,6 +74,22 @@ describe(
             }
         );
 
+        fit(
+            'Should validate required field: Nome fantasia',
+            function () {
+                helper.login();
+                browser.get('locations/new');
+
+                var button = $('.fa-check');
+                browser.wait(EC.elementToBeClickable($('.fa-check')), 5000);
+                button.click();
+
+                var modal = $('.bootbox-body');
+                browser.wait(EC.elementToBeClickable($('.modal-footer button')), 5000);
+                expect(modal.getText()).toContain('Informe o Nome fantasia.');
+            }
+        );
+
         it(
             'Should validate required field: Bairro',
             function () {
