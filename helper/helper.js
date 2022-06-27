@@ -35,8 +35,20 @@ module.exports = {
         });
     },
 
-    click: function(el){
-        var mouseClick = $(`.${el}`).click();
+    loginHub : function(){
+        var user = adminLogin.user
+        , password = adminLogin.password;
 
+        driver.browser.manage().window().maximize();
+        browser.get('/');
+
+        var userName = $('input#UserName'),
+        userPassword = $('input#Password'),
+        submitButton = $('.btn-login');
+        userName.sendKeys(user).then(function(){
+            userPassword.sendKeys(password).then(function(){
+                submitButton.click();
+            });
+        });
     }
 }

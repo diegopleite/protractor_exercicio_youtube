@@ -1,8 +1,10 @@
+const { browser } = require('protractor');
 var helper = require('../helper/helper.js');
 
 describe(
-    "Teste regressão API HUB",
+    "Teste regressão API HUB: ",
     function(){
+        var EC = protractor.ExpectedConditions;
         beforeAll(
             function(){            
                 browser.waitForAngularEnabled(false);    
@@ -14,12 +16,13 @@ describe(
 
             "Should login as user",
             function(){
-                helper.login();
-                browser.wait(ExpectedConditions.presenceOf($('#middle')));
-                // browser.get('/#/v1/marketplaces');
-                var unidadeNegocio = element(by.css('#hubMarketplaces > .dropdown-menu > li:nth-child(1) > a'));
-                unidadeNegocio.click();
-                browser.wait(ExpectedConditions.elementToBeClickable(unidadeNegocio));             
+                helper.loginHub();
+                browser.sleep(1000);
+                browser.get('/#/v1/marketplaces');
+
+                browser.wait(EC.elementToBeClickable($('.unit-selector-container')),5000);
+                
+                            
             }
         )
     }

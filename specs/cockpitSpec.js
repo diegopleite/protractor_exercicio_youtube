@@ -60,24 +60,24 @@ describe(
             }
         );
 
+        // it(
+        //     'Should validate required field: Nome fantasia',
+        //     function () {
+        //         //helper.login();
+        //         browser.get('locations/new');
+
+        //         browser.wait(EC.elementToBeClickable($('input[name="tradingName"')), 5000);
+        //         $('input[name="tradingName"').click().then(function () {
+        //             $('#react-tabs-0').click();
+        //             expect(element(by.css('.has-error')));
+        //         });
+        //     }
+        // );
+
         it(
             'Should validate required field: Nome fantasia',
             function () {
-                //helper.login();
-                browser.get('locations/new');
-
-                browser.wait(EC.elementToBeClickable($('input[name="tradingName"')), 5000);
-                $('input[name="tradingName"').click().then(function () {
-                    $('#react-tabs-0').click();
-                    expect(element(by.css('.has-error')));
-                });
-            }
-        );
-
-        fit(
-            'Should validate required field: Nome fantasia',
-            function () {
-                helper.login();
+                // helper.login();
                 browser.get('locations/new');
 
                 var button = $('.fa-check');
@@ -90,10 +90,10 @@ describe(
             }
         );
 
-        it(
+        fit(
             'Should validate required field: Bairro',
             function () {
-                //helper.login();
+                helper.login();
                 browser.get('locations/new');
 
                 browser.wait(EC.elementToBeClickable($('input[name="address.neighbourhood"')), 5000);
