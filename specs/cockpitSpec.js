@@ -1,10 +1,12 @@
 var helper = require('../helper/helper.js');
 var HtmlReporter = require('protractor-html-screenshot-reporter');
-const { element, browser, $ } = require('protractor');
+const { element, browser, $, $$ } = require('protractor');
+const driver = require('protractor');
+
 
 
 describe(
-    "Teste automatizado exercicios Protractor",
+    "Teste automatizado exercicios Protractor: ",
 
     function () {
         var EC = protractor.ExpectedConditions;
@@ -21,7 +23,7 @@ describe(
                 browser.sleep(1000);
                 element(by.css('.store-selector')).click();
                 browser.sleep(1000);
-                var dropDown = element(by.css('.dropdownlist-list input')).sendKeys('DCG');
+                element(by.css('.dropdownlist-list input')).sendKeys('DCG');
                 browser.sleep(1000);
                 element(by.css('li[data-value="dcg"]')).click();
 
@@ -191,11 +193,14 @@ describe(
         //     function () {
         //         //helper.login();
         //         browser.get('locations/new');
+        //         var name = $('input[name="tradingName"');
 
-        //         browser.wait(EC.elementToBeClickable($('input[name="tradingName"')), 5000);
-        //         $('input[name="tradingName"').click().then(function () {
-        //             $('#react-tabs-0').click();
-        //             expect(element(by.css('.has-error')));
+        //         browser.wait(EC.elementToBeClickable(name), 5000);
+        //         name.click().then(function () {
+        //             name.sendKeys("Nome teste automação!a@°´§").then(function(){
+        //                 $('#react-tabs-0').click();
+        //                 expect(element(by.css('.has-error')));
+        //             });
         //         });
         //     }
         // );
@@ -213,4 +218,31 @@ describe(
         //         });
         //     }
         // );
+
+        fit('should validate Required field Nome Fantasia',
+            async function () {
+                var button = $('.fa-check');
+                
+                helper.login();               
+                await browser.get('locations/new');
+                browser.wait(await EC.elementToBeClickable(button), 5000);
+                button.click();
+
+                var text = element(by.css('.modal-dialog')).element(by.css('.modal-content')).element(by.css('.modal-body')).element(by.css('.bootbox-body'));
+                // await EC.textToBePresentInElement($('.bootbox-body'), "testessss");
+                await EC.textToBePresentInElementValue(element(by.css('.bootbox-body')), 'text');
+                
+
+                // expect(await text.getText()).toContain('teste');
+                // var texto = element(by.css('.modal-body')).element(by.css('.bootbox-body')).getText();
+                // var texto = element(by.css('.modal-body .bootbox-body')).getText();
+
+                // element(by.css('.modal-content')).getText().then(console.log);
+
+                // console.log(await driver.findElements(By.css('.modal-content')).getText());
+
+
+                
+    }
+)
     });
