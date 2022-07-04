@@ -19,9 +19,11 @@ describe(
                 helper.loginHub();
                 browser.sleep(1000);
                 browser.get('/#/v1/marketplaces');
-
-                browser.wait(EC.elementToBeClickable($('.unit-selector-container')),5000);
                 
+                $$('.mr-2').then(function(arr){
+                    var text = arr[0].getText();
+                    console.log(text);
+                })
                             
             }
         )

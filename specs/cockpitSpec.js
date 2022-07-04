@@ -62,24 +62,40 @@ describe(
             }
         );
 
-        // it(
-        //     'Should validate required field: Nome fantasia',
-        //     function () {
-        //         //helper.login();
-        //         browser.get('locations/new');
+        it(
+            'Should validate - Filial Search with a valid Id and invalid Name',
+            function () {
+                // helper.login();
+                browser.sleep(1000);
+                browser.get('locations/');
+                // browser.sleep(1000);
+                // element(by.css('.store-selector')).click();
+                // browser.sleep(1000);
+                // element(by.css('.dropdownlist-list input')).sendKeys('DCG');
+                // browser.sleep(1000);
+                // element(by.css('li[data-value="dcg"]')).click();
 
-        //         browser.wait(EC.elementToBeClickable($('input[name="tradingName"')), 5000);
-        //         $('input[name="tradingName"').click().then(function () {
-        //             $('#react-tabs-0').click();
-        //             expect(element(by.css('.has-error')));
-        //         });
-        //     }
-        // );
+                browser.wait(EC.textToBePresentInElement($('tbody'), '666'),5000);
+                browser.wait(EC.elementToBeClickable($('input[name="id"')), 5000);
+
+                var id = $('input[name="id"]'),
+                    name = $('input[name="tradingName"]');
+                id.sendKeys('666').then(function () {
+                    name.sendKeys('oi_02').then(function () {
+                        name.sendKeys(protractor.Key.ENTER);
+                    });
+                });
+
+                browser.wait(EC.textToBePresentInElement($('.empty-table'), 'Não encontramos nenhum registro.',5000));
+                var text = $('.empty-table').getText();
+                expect(text).toContain('Não encontramos nenhum registro.');
+            }
+        );
 
         it(
             'Should validate required field: Nome fantasia',
             function () {
-                // helper.login();
+                //helper.login();
                 browser.get('locations/new');
 
                 var button = $('.fa-check');
@@ -92,33 +108,54 @@ describe(
             }
         );
 
-        fit(
+        it(
             'Should validate required field: Bairro',
             function () {
-                helper.login();
+                //helper.login();
                 browser.get('locations/new');
 
-                browser.wait(EC.elementToBeClickable($('input[name="address.neighbourhood"')), 5000);
-                $('input[name="address.neighbourhood"').click().then(function () {
-                    $('#react-tabs-0').click();
-                    expect(element(by.css('.has-error')));
-                });
+                var button = $('.fa-check');
+                browser.wait(EC.elementToBeClickable($('.fa-check')), 5000);
+                button.click();
+
+                var modal = $('.bootbox-body');
+                browser.wait(EC.elementToBeClickable($('.modal-footer button')), 5000);
+                expect(modal.getText()).toContain('Informe o Bairro.');
             }
         );
+
+        // it(
+        //     'Should validate required field: Estado',
+        //     function () {
+        //         // helper.login();
+        //         browser.get('locations/new');
+
+        //         browser.wait(EC.elementToBeClickable($('input[name="address.state"]')), 5000);
+        //         $$('input[name="address.state"] .rw-select').click().then(function () {
+        //             $('#react-tabs-0').click();
+        //             expect(element(by.css('.has-error')));
+        //         });
+        //     }
+        // );
 
         it(
             'Should validate required field: Estado',
             function () {
-                // helper.login();
+                //helper.login();
                 browser.get('locations/new');
 
-                browser.wait(EC.elementToBeClickable($('input[name="address.state"]')), 5000);
-                $$('input[name="address.state"] .rw-select').click().then(function () {
-                    $('#react-tabs-0').click();
-                    expect(element(by.css('.has-error')));
-                });
+                var button = $('.fa-check');
+                browser.wait(EC.elementToBeClickable($('.fa-check')), 5000);
+                button.click();
+
+                var modal = $('.bootbox-body');
+                browser.wait(EC.elementToBeClickable($('.modal-footer button')), 5000);
+                expect(modal.getText()).toContain('Informe o Estado.');
             }
         );
+
+
+        
 
         it(
             'Should validate required field: Id',
@@ -126,13 +163,29 @@ describe(
                 //helper.login();
                 browser.get('locations/new');
 
-                browser.wait(EC.elementToBeClickable($('input[name="id"')), 5000);
-                $('input[name="id"').click().then(function () {
-                    $('#react-tabs-0').click();
-                    expect(element(by.css('.has-error')));
-                });
+                var button = $('.fa-check');
+                browser.wait(EC.elementToBeClickable($('.fa-check')), 5000);
+                button.click();
+
+                var modal = $('.bootbox-body');
+                browser.wait(EC.elementToBeClickable($('.modal-footer button')), 5000);
+                expect(modal.getText()).toContain('Informe o ID.');
             }
         );
+
+        // it(
+        //     'Should validate required field: CNPJ',
+        //     function () {
+        //         //helper.login();
+        //         browser.get('locations/new');
+
+        //         browser.wait(EC.elementToBeClickable($('input[name="documents.cnpj"')), 5000);
+        //         $('input[name="documents.cnpj"').click().then(function () {
+        //             $('#react-tabs-0').click();
+        //             expect(element(by.css('.has-error')));
+        //         });
+        //     }
+        // );
 
         it(
             'Should validate required field: CNPJ',
@@ -140,27 +193,59 @@ describe(
                 //helper.login();
                 browser.get('locations/new');
 
-                browser.wait(EC.elementToBeClickable($('input[name="documents.cnpj"')), 5000);
-                $('input[name="documents.cnpj"').click().then(function () {
-                    $('#react-tabs-0').click();
-                    expect(element(by.css('.has-error')));
-                });
+                var button = $('.fa-check');
+                browser.wait(EC.elementToBeClickable($('.fa-check')), 5000);
+                button.click();
+
+                var modal = $('.bootbox-body');
+                browser.wait(EC.elementToBeClickable($('.modal-footer button')), 5000);
+                expect(modal.getText()).toContain('Informe o CNPJ.');
             }
         );
 
+        // it(
+        //     'Should validate required field: Razão social',
+        //     function () {
+        //         //helper.login();
+        //         browser.get('locations/new');
+
+        //         browser.wait(EC.elementToBeClickable($('input[name="description"')), 5000);
+        //         $('input[name="description"').click().then(function () {
+        //             $('#react-tabs-0').click();
+        //             expect(element(by.css('.has-error')));
+        //         });
+        //     }
+        // );
+
         it(
-            'Should validate required field: Razão social',
+            'Should validate required field: Razaão Social',
             function () {
                 //helper.login();
                 browser.get('locations/new');
 
-                browser.wait(EC.elementToBeClickable($('input[name="description"')), 5000);
-                $('input[name="description"').click().then(function () {
-                    $('#react-tabs-0').click();
-                    expect(element(by.css('.has-error')));
-                });
+                var button = $('.fa-check');
+                browser.wait(EC.elementToBeClickable($('.fa-check')), 5000);
+                button.click();
+
+                var modal = $('.bootbox-body');
+                browser.wait(EC.elementToBeClickable($('.modal-footer button')), 5000);
+                expect(modal.getText()).toContain('Informe a Razão social.');
             }
         );
+
+        // it(
+        //     'Should validate required field: CEP',
+        //     function () {
+        //         //helper.login();
+        //         browser.get('locations/new');
+
+        //         browser.wait(EC.elementToBeClickable($('input[name="address.zip"')), 5000);
+        //         $('input[name="address.zip"').click().then(function () {
+        //             $('#react-tabs-0').click();
+        //             expect(element(by.css('.has-error')));
+        //         });
+        //     }
+        // );
 
         it(
             'Should validate required field: CEP',
@@ -168,13 +253,29 @@ describe(
                 //helper.login();
                 browser.get('locations/new');
 
-                browser.wait(EC.elementToBeClickable($('input[name="address.zip"')), 5000);
-                $('input[name="address.zip"').click().then(function () {
-                    $('#react-tabs-0').click();
-                    expect(element(by.css('.has-error')));
-                });
+                var button = $('.fa-check');
+                browser.wait(EC.elementToBeClickable($('.fa-check')), 5000);
+                button.click();
+
+                var modal = $('.bootbox-body');
+                browser.wait(EC.elementToBeClickable($('.modal-footer button')), 5000);
+                expect(modal.getText()).toContain('Informe o CEP');
             }
         );
+
+        // it(
+        //     'Should validate required field: Endereço',
+        //     function () {
+        //         //helper.login();
+        //         browser.get('locations/new');
+
+        //         browser.wait(EC.elementToBeClickable($('input[name="address.address1"')), 5000);
+        //         $('input[name="address.address1"').click().then(function () {
+        //             $('#react-tabs-0').click();
+        //             expect(element(by.css('.has-error')));
+        //         });
+        //     }
+        // );
 
         it(
             'Should validate required field: Endereço',
@@ -182,25 +283,43 @@ describe(
                 //helper.login();
                 browser.get('locations/new');
 
-                browser.wait(EC.elementToBeClickable($('input[name="address.address1"')), 5000);
-                $('input[name="address.address1"').click().then(function () {
-                    $('#react-tabs-0').click();
-                    expect(element(by.css('.has-error')));
-                });
+                var button = $('.fa-check');
+                browser.wait(EC.elementToBeClickable($('.fa-check')), 5000);
+                button.click();
+
+                var modal = $('.bootbox-body');
+                browser.wait(EC.elementToBeClickable($('.modal-footer button')), 5000);
+                expect(modal.getText()).toContain('Informe o Endereço.');
             }
         );
 
+        // it(
+        //     'Should validate required field: Numero',
+        //     function () {
+        //         //helper.login();
+        //         browser.get('locations/new');
+
+        //         browser.wait(EC.elementToBeClickable($('input[name="address.number"')), 5000);
+        //         $('input[name="address.number"').click().then(function () {
+        //             $('#react-tabs-0').click();
+        //             expect(element(by.css('.has-error')));
+        //         });
+        //     }
+        // );
+
         it(
-            'Should validate required field: Numero',
+            'Should validate required field: Número',
             function () {
                 //helper.login();
                 browser.get('locations/new');
 
-                browser.wait(EC.elementToBeClickable($('input[name="address.number"')), 5000);
-                $('input[name="address.number"').click().then(function () {
-                    $('#react-tabs-0').click();
-                    expect(element(by.css('.has-error')));
-                });
+                var button = $('.fa-check');
+                browser.wait(EC.elementToBeClickable($('.fa-check')), 5000);
+                button.click();
+
+                var modal = $('.bootbox-body');
+                browser.wait(EC.elementToBeClickable($('.modal-footer button')), 5000);
+                expect(modal.getText()).toContain('Informe o Número.');
             }
         );
 
@@ -234,31 +353,4 @@ describe(
         //         });
         //     }
         // );
-
-        fit('should validate Required field Nome Fantasia',
-            async function () {
-                var button = $('.fa-check');
-                
-                helper.login();               
-                await browser.get('locations/new');
-                browser.wait(await EC.elementToBeClickable(button), 5000);
-                button.click();
-
-                var text = element(by.css('.modal-dialog')).element(by.css('.modal-content')).element(by.css('.modal-body')).element(by.css('.bootbox-body'));
-                // await EC.textToBePresentInElement($('.bootbox-body'), "testessss");
-                await EC.textToBePresentInElementValue(element(by.css('.bootbox-body')), 'text');
-                
-
-                // expect(await text.getText()).toContain('teste');
-                // var texto = element(by.css('.modal-body')).element(by.css('.bootbox-body')).getText();
-                // var texto = element(by.css('.modal-body .bootbox-body')).getText();
-
-                // element(by.css('.modal-content')).getText().then(console.log);
-
-                // console.log(await driver.findElements(By.css('.modal-content')).getText());
-
-
-                
-    }
-)
     });
