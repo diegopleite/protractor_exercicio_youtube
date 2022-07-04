@@ -75,7 +75,7 @@ describe(
                 // browser.sleep(1000);
                 // element(by.css('li[data-value="dcg"]')).click();
 
-                browser.wait(EC.textToBePresentInElement($('tbody'), '666'),5000);
+                browser.wait(EC.textToBePresentInElement($('tbody'), '666'), 5000);
                 browser.wait(EC.elementToBeClickable($('input[name="id"')), 5000);
 
                 var id = $('input[name="id"]'),
@@ -86,9 +86,36 @@ describe(
                     });
                 });
 
-                browser.wait(EC.textToBePresentInElement($('.empty-table'), 'Não encontramos nenhum registro.',5000));
+                browser.wait(EC.textToBePresentInElement($('.empty-table'), 'Não encontramos nenhum registro.', 5000));
                 var text = $('.empty-table').getText();
                 expect(text).toContain('Não encontramos nenhum registro.');
+            }
+        );
+
+        it(
+            'Should validate - Filial Search with a parcial Name',
+            function () {
+                // helper.login();
+                browser.sleep(1000);
+                browser.get('locations/');
+                // browser.sleep(1000);
+                // element(by.css('.store-selector')).click();
+                // browser.sleep(1000);
+                // element(by.css('.dropdownlist-list input')).sendKeys('DCG');
+                // browser.sleep(1000);
+                // element(by.css('li[data-value="dcg"]')).click();
+
+                browser.wait(EC.textToBePresentInElement($('tbody'), '666'), 5000);
+                browser.wait(EC.elementToBeClickable($('input[name="id"')), 5000);
+
+                var name = $('input[name="tradingName"]');
+                name.sendKeys('oi').then(function () {
+                    name.sendKeys(protractor.Key.ENTER);
+                });
+
+                browser.wait(EC.textToBePresentInElement($('tbody'), 'oi_1', 5000));
+                var text = $$('tbody td').getText();
+                expect(text).toContain('oi_1');
             }
         );
 
@@ -155,7 +182,7 @@ describe(
         );
 
 
-        
+
 
         it(
             'Should validate required field: Id',
@@ -353,4 +380,5 @@ describe(
         //         });
         //     }
         // );
-    });
+    }
+);
